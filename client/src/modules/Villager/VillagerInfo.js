@@ -1,19 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import styles from '../module.css/villagerInfo.module.css';
 
 function VillagerInfo(props) {
-    const { villager, language } = props;
+    const { villager, language, villagers } = props;
+    const [species, setspecies] = useState([]);
+    const [result, setresult] = useState([]);
+
+    useEffect(() => {
+        let temp = [...species];
+        for(const key in villagers){
+            if(!temp.includes(villagers[key]['species'])){
+                temp.push(villagers[key]['species']);
+            }
+        }
+        setspecies(temp);
+        console.log(species)
+    }, [])
+
+    const filterHandler = (e) => {
+        // const list = villagers.filter(villager => {
+        //     villager[e.target.value] 
+        // })
+        
+    }
 
     return (
         <div className={styles.container}>
             {/* FILTER */}
             <div className={styles.card}>
-                <p><input className={styles.inputBar} /></p>
-                <button className={styles.button}>Species</button>
-                <button className={styles.button}>Birthday</button>
-                <button className={styles.button}>Personality</button>
-                <button className={styles.button}>Hobby</button>
+                {/* <input className={styles.inputBar} /><br/> */}
+                <button onClick={filterHandler} value='species' className={styles.filter}>
+                    Species
+                </button>
+                <button className={styles.filter}>
+                    Birthday
+                </button>
+                <button className={styles.filter}>
+                    Hobby
+                </button>
+                <button className={styles.filter}>
+                    Personality
+                </button>
             </div>
             {/* INFO */}
             <div className={styles.card}>

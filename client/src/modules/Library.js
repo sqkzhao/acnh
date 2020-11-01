@@ -1,7 +1,7 @@
 import React from 'react';
-import VillagerList from './VilaggerList';
+import VillagerList from './Villager/VilaggerList';
 
-import styles from '../module.css/library.module.css';
+import styles from './module.css/library.module.css';
 
 const Library = () => {
 

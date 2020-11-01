@@ -2,8 +2,7 @@
 .bg {
     background-image: 
         linear-gradient(#00000083, #0000004d, #59fa7e52), 
-        url('../images/acnh_bg.png');
+        url('../../images/acnh_bg.png');
     background-size: cover;
     height: 100vh;
-    
 }

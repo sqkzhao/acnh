@@ -1,8 +1,8 @@
-import GoogleLoginButton from './components/GoogleLoginButton';
-import GoogleLogoutButton from './components/GoogleLogoutButton';
-import Library from './components/Library';
+import GoogleLoginButton from './modules/components/GoogleLoginButton';
+import GoogleLogoutButton from './modules/components/GoogleLogoutButton';
+import Library from './modules/Library';
 
-import styles from './module.css/app.module.css';
+import styles from './modules/module.css/app.module.css';
 
 function App() {
   return (
