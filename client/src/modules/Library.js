@@ -1,5 +1,5 @@
 import React from 'react';
-import VillagerList from './Villager/VilaggerList';
+import VillagerList from './villager/VilaggerList';
 
 import styles from './module.css/library.module.css';
 

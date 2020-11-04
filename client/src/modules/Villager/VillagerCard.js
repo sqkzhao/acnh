@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from '../module.css/villagerCard.module.css';
-// import { selectVillager } from '../../actions';
+import styles from '../module.css/villager.module.css';
 
 function VillagerCard(props) {
     const { id, icon_url, name, clickVillager } = props;

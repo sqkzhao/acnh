@@ -1,12 +1,6 @@
-import { combineReducers } from 'redux';
-
-const selectVillagerReducer = (selectedVillager = null, action) => {
-    if(action.type === 'VILLAGER_SELECTED') {
+export default (villagers = [], action) => {
+    if(action.type === 'FETCH_VILLAGERS') {
         return action.payload;
     }
-    return selectedVillager;
+    return villagers;
 };
-
-export default combineReducers({
-    selectedVillager: selectVillagerReducer
-})

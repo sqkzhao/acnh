@@ -1,39 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import acnh from '../../apis/acnh';
+import { connect } from 'react-redux';
+import { fetchVillagerData } from '../../actions';
 import VillagerCard from './VillagerCard';
+import VillagerController from './VillagerController';
 import VillagerInfo from './VillagerInfo';
 
-import styles from '../module.css/villagerList.module.css';
+import styles from '../module.css/villager.module.css';
 
-function VilaggerList() {
-    const [villagers, setvillagers] = useState([]);   // dictionary
+function VilaggerList(props) {
+    const { fetchVillagerData, villagers, species } = props;
     const [selectedVillager, setselectedVillager] = useState(null);
     const [language, setlanguage] = useState('-USen');
 
     useEffect(() => {
-        getVillagers();
+        fetchVillagerData();
     }, []);
 
-    const getVillagers = async () => {
-        const response = await acnh.get('/villagers');
-        setvillagers(response.data);
-    };
-
     const clickVillager = (e) => {
+        console.log(e.target)
         setselectedVillager(villagers[e.target.value]);
     }
 
     return (
-        <div className={styles.container}>
-            {/* <select name="species" id="species">
-                <option>Species</option>
-                {species.map((specie, i) => {
-                    return (
-                        <option key={i} value={specie}>
-                            {specie}
-                        </option>
-                )})}
-            </select> */}
+        <div>
             <div className={styles.cardContainer}>
                 {villagers.slice(100, 120).map((villager) => {
                     let name = villager['name'][`name${language}`];
@@ -48,14 +37,21 @@ function VilaggerList() {
                     )
                 })}
             </div>
-            <VillagerInfo 
-                villager={selectedVillager} 
-                language={language} 
-                villagers={villagers} 
-                className={styles.infoContianer}
-            />
+            <div className={styles.container}>
+                <VillagerController />
+                <VillagerInfo 
+                    villager={selectedVillager} 
+                    language={language} 
+                    villagers={villagers} 
+                    className={styles.infoContianer}
+                />
+            </div>
         </div>
     );
 }
 
-export default VilaggerList;
+const mapStateToProps = (state) => {
+    return { villagers: state.villagers };
+}
+
+export default connect(mapStateToProps, { fetchVillagerData })(VilaggerList);
