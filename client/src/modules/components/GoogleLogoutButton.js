@@ -9,7 +9,7 @@ const GoogleLogoutButton = () => {
     return (
         <div>
             <GoogleLogout
-                clientId="404067026197-5c2cba9m00d56qhpnnppgfivk92f7vgn.apps.googleusercontent.com"
+                clientId=""
                 buttonText="Logout"
                 onLogoutSuccess={logout}
                 >
